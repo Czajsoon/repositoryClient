@@ -1,0 +1,46 @@
+<div class="adding-files-background">
+  <h2 mat-dialog-title>Add file to repository</h2>
+  <mat-dialog-content>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-sm-4">
+          <mat-form-field>
+            <input #fileName id="fileName" formControlName="fileName" matInput placeholder="File name">
+            <mat-error *ngIf="form.get('fileName').hasError('required')">file name field is Required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field>
+            <input #fileDescription id="fileDescription" formControlName="fileDescription" matInput placeholder="Description">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <mat-form-field>
+            <input #fileFormat id="fileFormat" formControlName="fileFormat" matInput placeholder="File format">
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <input #file id="file" formControlName="file" type="file">
+          <mat-error *ngIf="form.get('file').hasError('required')">*</mat-error>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <mat-form-field>
+            <input #additionalPath id="additionalPath" formControlName="additionalPath" matInput placeholder="Path">
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button class="cancel" mat-dialog-close>Cancel</button>
+    <button mat-raised-button class="add-file" mat-dialog-close [disabled]="form.invalid" (click)="sendForm()">Add</button>
+  </mat-dialog-actions>
+</div>
+
+
+
+

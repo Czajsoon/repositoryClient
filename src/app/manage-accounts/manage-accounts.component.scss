@@ -1,0 +1,100 @@
+.toolbarElement{
+  //margin: 0 auto;
+  margin: auto 0;
+  margin-right: 50px;
+  text-align: right;
+}
+
+.requestInput{
+  margin: 0 20px 0 20px;
+  height: 20px;
+}
+
+.menu-container{
+  background-color: #25274D;
+}
+
+.content-container{
+  margin-top: 20px;
+}
+
+table{
+  width: 90%;
+}
+
+.table-container{
+  margin-top: 20px;
+  padding-bottom: 120px;
+  position: center;
+  display: flex;
+  justify-content: center;
+}
+
+.animation-rotate{
+
+  img{
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+  }
+
+}
+
+.searchButton{
+  margin-top: 20px;
+  padding: 10px 100px;
+  font-size: 15px;
+  color: #FFFFFF;
+  background-color: #25274D;
+}
+
+.logoutImage{
+  padding: 10px;
+  text-align: right;
+  //margin: 20px ;
+  cursor: pointer;
+}
+
+.githubIcon{
+  width: 50px;
+  margin: 0 20px;
+}
+
+.text{
+  color: #FFFFFF;
+}
+
+.dropdown-item:hover{
+  background-color: #464866;
+}
+
+.page{
+  height: 100%;
+  background-color: #e5e6ec;
+}
+
+.accordion{
+  background-color: #e5e6ec;
+}
+
+.searchUser{
+  background-color: #3b3f8b;
+  color: #FFFFFF;
+}
+
+
+
+.menu-btn{
+  background-color: #25274D;
+}
+
+.side-nav{
+  height: 100%;
+  position: fixed;
+  width: 250px;
+  background-color: #25274D;
+  color: #FFFFFF;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg);}}

@@ -1,0 +1,52 @@
+button{
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+body{
+}
+
+h2{
+  font-size: 30px;
+}
+
+.login-container{
+  //margin-top: 100px;
+}
+
+.login-content{
+  margin-top: 15px;
+  background-color: rgba(37, 39, 77, 0.70);
+  //margin-bottom: 100px;
+  padding: 50px;
+  border-radius: 10px;
+}
+
+.register-btn{
+  background-color: #2E9CCA;
+}
+
+.text{
+  color: #EDF5E1;
+}
+
+.login-btn{
+  background-color: #29648A;
+  color: black;
+}
+
+.logo {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  width: 40px;
+}
+
+.page{
+  background-image: url("../../assets/background.jpg");
+  background-color: #5CDB95;
+  height: 100%;
+  width: 100%;
+}

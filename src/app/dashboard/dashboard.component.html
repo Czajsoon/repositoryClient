@@ -1,0 +1,40 @@
+<mat-drawer-container class="page">
+  <mat-drawer #drawer mode="side" class="side-nav drawer shadow">
+    <h2 class="headerView">Dashboard <img src="assets/icons/space_dashboard_white_24dp.svg" alt="DashboardIcon"></h2>
+    <div class="justify-content-center dropdown-item">
+      <button *ngIf="user.admin" class="toolbar-buttons dropdown-item text text-center" routerLink="/manage-accounts" mat-menu-item>
+        Manage Accounts
+        <img src="assets/icons/admin_panel_settings_white_24dp.svg" alt="manageAccounts" class="logoutImage">
+      </button>
+    </div>
+    <div class="justify-content-center dropdown-item">
+      <button routerLink="/user-settings" mat-menu-item class="text text-center dropdown-item toolbar-buttons animation-rotate">
+        Settings
+        <img src="assets/icons/settings_white_24dp.svg" alt="settings" class="text logoutImage ">
+      </button>
+    </div>
+    <div class="justify-content-center dropdown-item">
+      <button mat-menu-item (click)="logout()" class="dropdown-item text text-center">
+        Logout
+        <img src="assets/icons/logout_white_24dp.svg" alt="logout" class="logoutImage">
+      </button>
+    </div>
+  </mat-drawer>
+  <div class="page">
+    <mat-toolbar class="menu-container shadow toolbar">
+      <button mat-raised-button class="menu-btn" (click)="drawer.toggle()"><img src="assets/icons/menu_white_24dp.svg" alt="burgerIcon"></button>
+      <span class="spacer"></span>
+      <p class="toolbarElement text">{{user.firstName}} {{user.lastName}}</p>
+      <img src="assets/icons/space_dashboard_white_24dp.svg" alt="dashboardIcon">
+      <a href="https://github.com/Czajsoon" target="_blank"><img src="assets/icons/GitHub-Icon-White-Logo.wine.svg" alt="githubIcon" class="githubIcon"></a>
+    </mat-toolbar>
+    <app-files></app-files>
+    <div id="adding-buttons">
+      <button (click)="openAddFolderAccess()" mat-fab class="justify-content-center control-btn"  id="access-folder-btn"><img src="../../assets/icons/enhanced_encryption_black_24dp.svg" alt="addAccessFolder"></button>
+      <button (click)="openNewFileComponent()" mat-fab class="justify-content-center control-btn"  id="new-file-btn"><img src="../../assets/icons/post_add_white_24dp.svg" alt="addOne"></button>
+      <button (click)="openNewFilesComponent()" mat-fab class="justify-content-center control-btn"  id="new-files-btn"><img src="../../assets/icons/playlist_add_white_24dp.svg" alt="multipleAdd"></button>
+    </div>
+  </div>
+</mat-drawer-container>
+
+

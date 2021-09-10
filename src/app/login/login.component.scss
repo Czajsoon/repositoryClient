@@ -1,0 +1,53 @@
+button{
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h2{
+  font-size: 30px;
+}
+
+.login-container{
+
+  //margin-top: 100px;
+}
+
+.error{
+  color: #9e4242;
+  font-size: 12px;
+}
+
+.login-btn{
+  background-color: #2E9CCA;
+}
+
+.register-btn{
+  background-color: #29648A;
+  color: #FFFFFF;
+}
+
+.page{
+  background-image: url("../../assets/background.jpg");
+  height: 100%;
+  width: 100%;
+}
+
+.text{
+  color: #C5C6C7;
+}
+
+.login-content{
+  background-color: rgba(37, 39, 77, 0.47);
+  margin-top: 100px;
+  padding: 50px;
+  border-radius: 10px;
+}
+
+.logo {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  width: 40px;
+}

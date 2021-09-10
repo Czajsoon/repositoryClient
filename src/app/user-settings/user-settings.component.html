@@ -1,0 +1,80 @@
+<mat-drawer-container class="page">
+  <mat-drawer #drawer  mode="side" class="side-nav drawer">
+    <h2 class="headerView">Settings <img src="assets/icons/settings_white_24dp.svg" alt="DashboardIcon" class="rotate"></h2>
+    <div *ngIf="credentials.admin" class="justify-content-center dropdown-item">
+      <button class="toolbar-buttons dropdown-item text text-center" routerLink="/manage-accounts" mat-menu-item>
+        Manage Accounts
+        <img src="assets/icons/admin_panel_settings_white_24dp.svg" alt="manageAccounts" class="logoutImage">
+      </button>
+    </div>
+    <div class="justify-content-center dropdown-item">
+      <button routerLink="/dashboard" mat-menu-item class="dropdown-item toolbar-buttons text text-center">
+        Dashboard
+        <img src="assets/icons/space_dashboard_white_24dp.svg" alt="settings" class="logoutImage ">
+      </button>
+    </div>
+    <div class="justify-content-center dropdown-item">
+      <button mat-menu-item (click)="logout()" class="dropdown-item text text-center">
+        Logout
+        <img src="assets/icons/logout_white_24dp.svg" alt="logout" class="logoutImage">
+      </button>
+    </div>
+  </mat-drawer>
+  <mat-toolbar class="menu-container" color="primary">
+    <button mat-raised-button class="menu-btn" (click)="drawer.toggle()"><img src="assets/icons/menu_white_24dp.svg" alt="burgerIcon"></button>
+    <span class="spacer"></span>
+    <p class="toolbarElement text">{{credentials.firstName}} {{credentials.lastName}}</p>
+    <img src="assets/icons/settings_white_24dp.svg" alt="dashboardIcon" class="animation-rotate rotate">
+    <a href="https://github.com/Czajsoon" target="_blank"><img src="assets/icons/GitHub-Icon-White-Logo.wine.svg" alt="githubIcon" class="githubIcon"></a>
+  </mat-toolbar>
+  <div class="container justify-content-center shadow settings-container">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 text-center">
+        <h2>User settings</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-sm-4 text-center">
+        <p> Login </p>
+      </div>
+      <div class="col-sm-4 text-center">
+        <mat-form-field>
+          <mat-label>Login</mat-label>
+          <input #login matInput placeholder="{{credentials.login}}" value="{{credentials.login}}">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-sm-4 text-center">
+        <p> First name </p>
+      </div>
+      <div class="col-sm-4 text-center">
+        <mat-form-field>
+          <mat-label>First name</mat-label>
+          <input #firstName matInput placeholder="{{credentials.firstName}}" value="{{credentials.firstName}}">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-sm-4 text-center">
+        <p> Last name </p>
+      </div>
+      <div class="col-sm-4 text-center">
+        <mat-form-field>
+          <mat-label>Last name</mat-label>
+          <input #lastName matInput placeholder="{{credentials.lastName}}" value="{{credentials.lastName}}">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-sm-4 text-center">
+        <button mat-raised-button class="confirm-button navigate change-pass-btn" (click)="changePassword()">Change password</button>
+      </div>
+      <div class="col-sm-4 text-center">
+        <button mat-raised-button class="confirm-button navigate save-changes-btn" (click)="submitChanges()">Confirm changes</button>
+      </div>
+    </div>
+  </div>
+</mat-drawer-container>
+
+

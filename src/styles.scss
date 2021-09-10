@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: hidden}
+
+
+$base-color: #25274D;
+$accent-primary-color: #464866;
+$accent-color: #AAABB8;
+$base-color-accent: #2E9CCA;
+$base-text-color: #29648A;
+$error-color: #ff6b6b;
+
+.toast-config-success{
+  background: #43dc43;
+  color: white;
+  text-align: center;
+}
+
+.toast-config-failure{
+  background: #ef3d3d;
+  color: white;
+  text-align: center;
+}
+
+.distance{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+.headerView{
+  margin: auto;
+  text-align: center;
+  padding-top: 20px;
+}

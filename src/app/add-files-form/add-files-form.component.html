@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Add files to repository</h2>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-sm-4">
+        <mat-form-field>
+          <input #path id="path" formControlName="additionalPath" matInput placeholder="Path">
+        </mat-form-field>
+      </div>
+      <div class="col-sm-4">
+        <mat-form-field>
+          <input #desc id="desc" formControlName="fileDescription" matInput placeholder="Description">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <input #file id="file" formControlName="file" type="file" multiple>
+        <mat-error *ngIf="form.get('file').hasError('required')">*</mat-error>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button class="cancel" mat-dialog-close>Cancel</button>
+  <button mat-raised-button class="add-file" mat-dialog-close [disabled]="form.invalid" (click)="sendForm()">Add</button>
+</mat-dialog-actions>

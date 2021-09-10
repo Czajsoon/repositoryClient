@@ -1,0 +1,117 @@
+<div class="container-fluid justify-content-center content-container">
+  <mat-accordion *ngIf="user.admin">
+    <mat-expansion-panel hideToggle class="accordion">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="text-center justify-content-center">
+          Admin Panel
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row justify-content-center">
+        <div class="col-sm-6 justify-content-center text-center">
+          <mat-form-field class="justify-content-center text-center">
+            <input #AdminFileID matInput placeholder="File ID">
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6 justify-content-center text-center">
+          <button (click)="getIdFile()" mat-raised-button class="download-btn btn btn-primary button">Get by ID</button>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-sm-6 justify-content-center text-center">
+          <button mat-raised-button (click)="getAllFiles()" class="access-btn getAllRepoButton">Display all files in repository</button>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div class="container content-spacer">
+  </div>
+  <mat-accordion>
+    <mat-expansion-panel hideToggle class="accordion">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="text-center justify-content-center">
+          User panel
+        </mat-panel-title >
+      </mat-expansion-panel-header>
+      <div class="container justify-content-center">
+        <div class="row justify-content-center">
+          <div class="col-sm-2 justify-content-center">
+            <mat-form-field class="text-center">
+              <input #fileID matInput placeholder="File id">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-2 justify-content-center">
+            <mat-form-field class="text-center">
+              <input #fileName matInput placeholder="File name">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-2 justify-content-center">
+            <mat-form-field class="text-center">
+              <input #fileFormat matInput placeholder="File format">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-2 justify-content-center">
+            <mat-form-field class="text-center">
+              <input #directory matInput placeholder="Directory">
+            </mat-form-field>
+          </div>
+          <div class="col-sm-2 text-center">
+            <button mat-raised-button class="download-btn" (click)="searchFile()">Search</button>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-sm-4 justify-content-center text-center">
+            <button mat-raised-button class="getAllRepoButton access-btn" (click)="getRepository()">Get my repository</button>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div class="table-container ">
+  <table mat-table [dataSource]="dataToDisplay" class="mat-elevation-z8 accordion">
+
+    <ng-container matColumnDef="FileName">
+      <th mat-header-cell *matHeaderCellDef> File Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.FileName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="FileType">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> File Type </th>
+      <td mat-cell *matCellDef="let element" class="text-center"> {{element.FileType}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> ID </th>
+      <td mat-cell *matCellDef="let element" class="text-center"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="preview">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Preview </th>
+      <td mat-cell *matCellDef="let element"class="text-center"><button mat-raised-button class="preview-btn" (click)="goToLink(element.preview)"><img src="../../assets/icons/preview_white_24dp.svg" alt="preview"></button></td>
+    </ng-container>
+
+    <ng-container matColumnDef="Details">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Details </th>
+      <td mat-cell *matCellDef="let element" class="text-center"><button mat-raised-button class="details-btn" (click)="openDetails(element)"><img src="../../assets/icons/info_white_24dp.svg" alt="info"></button></td>
+    </ng-container>
+
+    <ng-container matColumnDef="download">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Download </th>
+      <td mat-cell *matCellDef="let element" class="text-center"><button mat-raised-button class="download-btn" (click)="downloadFile(element.download)"><img src="../../assets/icons/file_download_white_24dp.svg" alt="download"></button></td>
+    </ng-container>
+
+    <ng-container matColumnDef="Access">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Access </th>
+      <td mat-cell *matCellDef="let element" class="text-center"><button [disabled]="element.object.userID != user.id && !user.admin"  mat-raised-button class="access-btn" (click)="openAccessPrivilege(element)"><img src="../../assets/icons/enhanced_encryption_black_24dp.svg" alt="GiveAccess"></button></td>
+    </ng-container>
+
+    <ng-container matColumnDef="Delete">
+      <th mat-header-cell *matHeaderCellDef class="text-center"> Delete </th>
+      <td mat-cell *matCellDef="let element" class="text-center"><button [disabled]="element.object.userID != user.id && !user.admin" mat-raised-button color="warn" (click)="deleteFile(element.id)"><img src="../../assets/icons/delete_white_24dp.svg" alt="Delete"></button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+

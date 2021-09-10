@@ -1,0 +1,96 @@
+.rotate{
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+
+.settings-container{
+  background-color: rgba(59, 63, 139, 0.18);
+  border: solid 2px rgba(0, 0, 0, 0.06);
+  border-radius: 5px;
+  margin-top: 80px;
+  padding-top: 20px;
+  font-size: 20px;
+  width: 700px;
+}
+
+.change-pass-btn{
+  background-color: #25274D;
+  color: #FFFFFF;
+}
+
+.save-changes-btn{
+  background-color: #3b3f8b;
+  color: #FFFFFF;
+}
+
+.logoutImage{
+  padding: 10px;
+  text-align: right;
+  //margin: 20px ;
+  cursor: pointer;
+}
+
+.side-nav{
+  height: 100%;
+  position: fixed;
+  width: 200px;
+  background-color: #25274D;
+  color: #FFFFFF;
+}
+
+.admin{
+  margin: 0 auto;
+}
+
+.row{
+  margin: 10px 0;
+}
+
+.confirm-button{
+  margin: 15px 0;
+}
+
+.text{
+  color: #FFFFFF;
+}
+
+p{
+  margin: revert;
+}
+
+.navigate{
+  padding: 5px 15px;
+}
+
+.toolbarElement{
+  //margin: 0 auto;
+  margin: auto 0;
+  margin-right: 50px;
+  text-align: right;
+}
+
+.menu-container{
+  background-color: #25274D;
+}
+
+.dropdown-item:hover{
+  background-color: #464866;
+}
+
+.menu-btn{
+  background-color: #25274D;
+}
+
+.githubIcon{
+  width: 50px;
+  margin: 0 20px;
+}
+
+.page{
+  height: 100%;
+  background-color: #e5e6ec;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg);}}

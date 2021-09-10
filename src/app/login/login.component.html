@@ -1,0 +1,26 @@
+<div class="page">
+  <div class="row justify-content-center login-container">
+    <div class="col-sm-5 shadow login-content justify-content-center">
+      <img src="../../assets/icons/account_circle_black_24dp.svg" alt="person" class="logo">
+      <h2 class="text-center text">Login</h2>
+      <form [formGroup]="form">
+        <mat-form-field class="d-block text-center">
+          <mat-label class="text">Login</mat-label>
+          <input class="text" #inputLogin id="inputLogin" matInput formControlName="inputLogin" type="text">
+          <mat-error  *ngIf="form.get('inputLogin').hasError('required')">Login is required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="d-block text-center">
+          <mat-label class="text-center text">Password</mat-label>
+          <input class="text text-center" #inputPassword id="inputPassword"  matInput formControlName="inputPassword" type="password">
+          <mat-error  *ngIf="form.get('inputPassword').hasError('required')">Password is required</mat-error>
+          <mat-error  *ngIf="form.get('inputPassword').hasError('minlength')">Password must have min 8 chars</mat-error>
+          <mat-error  *ngIf="form.get('inputPassword').hasError('maxlength')">Password must have max 20 chars</mat-error>
+        </mat-form-field>
+      </form>
+      <button mat-raised-button [disabled]="form.invalid" (click)="login()" class="btn btn-primary d-block login-btn">LOGIN</button>
+      <p class="text-center text">You don't have an account?</p>
+      <button routerLink="/register" mat-raised-button class="btn btn-primary d-block register-btn">REGISTER</button>
+    </div>
+  </div>
+</div>
+

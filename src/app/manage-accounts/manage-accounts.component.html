@@ -1,0 +1,121 @@
+<mat-drawer-container class="page">
+  <mat-drawer #drawer mode="side" class="side-nav drawer">
+    <h2 class="headerView">Manage Accounts <img src="assets/icons/admin_panel_settings_white_24dp.svg" alt="DashboardIcon"></h2>
+    <div class="justify-content-center dropdown-item">
+      <button class="toolbar-buttons dropdown-item text text-center" routerLink="/dashboard" mat-menu-item>
+        Dashboard
+        <img src="assets/icons/space_dashboard_white_24dp.svg" alt="manageAccounts" class="logoutImage">
+      </button>
+    </div>
+    <div class="justify-content-center dropdown-item">
+      <button routerLink="/user-settings" mat-menu-item class="text dropdown-item toolbar-buttons animation-rotate text-center">
+        Settings
+        <img src="assets/icons/settings_white_24dp.svg" alt="settings" class="logoutImage ">
+      </button>
+    </div>
+    <div class="justify-content-center dropdown-item">
+      <button mat-menu-item (click)="logout()" class="dropdown-item text text-center">
+        Logout
+        <img src="assets/icons/logout_white_24dp.svg" alt="logout" class="logoutImage">
+      </button>
+    </div>
+  </mat-drawer>
+  <mat-toolbar class="menu-container toolbar">
+    <button mat-raised-button (click)="drawer.toggle()" class="menu-btn"><img src="assets/icons/menu_white_24dp.svg" alt="burgerIcon"></button>
+    <span class="spacer"></span>
+    <p class="toolbarElement text">{{user.firstName}} {{user.lastName}}</p>
+    <img src="assets/icons/admin_panel_settings_white_24dp.svg" alt="manageAccountsIcon">
+    <a href="https://github.com/Czajsoon" target="_blank"><img src="assets/icons/GitHub-Icon-White-Logo.wine.svg" alt="githubIcon" class="githubIcon"></a>
+  </mat-toolbar>
+  <div class="container content-container">
+    <mat-accordion>
+      <mat-expansion-panel hideToggle class="accordion">
+        <mat-expansion-panel-header>
+          <mat-panel-title class="text-center justify-content-center">
+            Search settings
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="container justify-content-center">
+          <div class="row justify-content-center">
+            <div class="col-sm-2 justify-content-center">
+              <mat-form-field class="requestInput">
+                <mat-label>User ID</mat-label>
+                <input #userID id="userID" matInput type="text">
+              </mat-form-field>
+            </div>
+            <div class="col-sm-2 justify-content-center">
+              <mat-form-field class="requestInput">
+                <mat-label>User Login</mat-label>
+                <input #userLogin id="userLogin" matInput type="text">
+              </mat-form-field>
+            </div>
+            <div class="col-sm-2 justify-content-center">
+              <mat-form-field class="requestInput">
+                <mat-label>User Firstname</mat-label>
+                <input #userFirstName id="userFirstName" matInput type="text">
+              </mat-form-field>
+            </div>
+            <div class="col-sm-2 justify-content-center">
+              <mat-form-field class="requestInput">
+                <mat-label>User Lastname</mat-label>
+                <input #userLastName id="userLastName" matInput type="text">
+              </mat-form-field>
+            </div>
+            <div class="col-sm-2 justify-content-center text-center">
+                <mat-slide-toggle color="primary" [(ngModel)]="admin" >is Admin?</mat-slide-toggle>
+            </div>
+            <div class="col-sm-2 justify-content-center text-center">
+              <button class="justify-content-center searchUser" mat-raised-button (click)="search()">Search</button>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center distance text-center">
+          <div class="col-sm-12 justify-content-center text-center">
+            <button class="text-center justify-content-center searchButton" (click)="getUsers()" mat-raised-button >Show all users</button>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <div class="table-container">
+    <table mat-table [dataSource]="dataToDisplay" class="mat-elevation-z8 accordion">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>User ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Login">
+        <th mat-header-cell *matHeaderCellDef> Login </th>
+        <td mat-cell *matCellDef="let element"> {{element.login}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="FirstName">
+        <th mat-header-cell *matHeaderCellDef class="text-center"> Firstname </th>
+        <td mat-cell *matCellDef="let element" class="text-center"> {{element.firstName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="LastName">
+        <th mat-header-cell *matHeaderCellDef class="text-center"> Lastname </th>
+        <td mat-cell *matCellDef="let element" class="text-center"> {{element.lastName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="AdminPrivilege">
+        <th mat-header-cell *matHeaderCellDef class="text-center"> Admin Privilege</th>
+        <td mat-cell *matCellDef="let element" class="text-center">
+          <mat-slide-toggle color="primary" [(ngModel)]="element.admin" (change)="changePrivilege(element.admin,element.id)"></mat-slide-toggle>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Delete" >
+        <th mat-header-cell *matHeaderCellDef class="text-center"> Delete Account </th>
+        <td mat-cell *matCellDef="let element" class="text-center">
+          <button (click)="deleteAccount(element.id)" [disabled]="element.admin" mat-raised-button color="warn"><img src="assets/icons/delete_forever_black_24dp.svg" alt="deleteIcon"></button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</mat-drawer-container>

@@ -1,0 +1,42 @@
+<div class="page">
+  <div class="row justify-content-center login-container">
+    <div class="col-sm-5 shadow login-content justify-content-center">
+      <img src="../../assets/icons/person_black_24dp.svg" alt="person" class="logo">
+      <h2 class="text-center text">Register</h2>
+      <form [formGroup]="form">
+        <mat-form-field class="d-block text-center">
+          <mat-label class="text">Login</mat-label>
+          <input class="text" #inputLogin id="inputLogin" formControlName="inputLogin" matInput type="text">
+          <mat-error *ngIf="form.get('inputLogin').hasError('required')">Login is required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="d-block text-center">
+          <mat-label class="text">First name</mat-label>
+          <input class="text" #inputName id="inputName" formControlName="inputName" matInput type="text">
+          <mat-error *ngIf="form.get('inputName').hasError('required')">Name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="d-block text-center">
+          <mat-label class="text">Last name</mat-label>
+          <input class="text" #inputLName id="inputLName"  formControlName="inputLName" matInput type="text">
+          <mat-error *ngIf="form.get('inputLName').hasError('required')">Last name required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="d-block text-center">
+          <mat-label class="text">Password</mat-label>
+          <input class="text" #inputPass id="inputPass" formControlName="inputPass" matInput type="password">
+          <mat-error *ngIf="form.get('inputPass').hasError('required')">Password is required</mat-error>
+          <mat-error *ngIf="form.get('inputPass').hasError('minlength')">Password must have min 8 chars</mat-error>
+          <mat-error *ngIf="form.get('inputPass').hasError('maxlength')">Password must have max 20 chars</mat-error>
+        </mat-form-field>
+        <mat-form-field class="d-block text-center">
+          <mat-label class="text">Repeat password</mat-label>
+          <input class="text" id="inputRepeatPassword" formControlName="inputRepeatPassword" matInput type="password">
+          <mat-error *ngIf="form.get('inputRepeatPassword').hasError('required')">Password is required</mat-error>
+          <mat-error *ngIf="form.get('inputRepeatPassword').hasError('mustMatch')">Passwords must match</mat-error>
+        </mat-form-field>
+      </form>
+      <button (click)="register()" mat-raised-button [disabled]="form.invalid" class="btn btn-primary d-block register-btn">REGISTER</button>
+      <p class="text-center text">You have an account?</p>
+      <button routerLink="/login" mat-raised-button class="btn btn-primary d-block login-btn">LOGIN</button>
+    </div>
+  </div>
+</div>
+
